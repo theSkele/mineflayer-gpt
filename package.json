@@ -1,0 +1,20 @@
+{
+  "name": "mineflayer-gpt",
+  "version": "0.2.0",
+  "description": "gpt interprets desired behavior and then executes such, more flexible than commands",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "theSkele",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mineflayer": "^4.12.0",
+    "mineflayer-pathfinder": "^2.4.4",
+    "mineflayer-statemachine": "^1.7.0",
+    "openai": "^4.2.0",
+    "prismarine-viewer": "^1.25.0",
+    "winston": "^3.10.0"
+  }
+}

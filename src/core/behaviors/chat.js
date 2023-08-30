@@ -17,5 +17,6 @@ module.exports = async function (bot, targets) {
     console.log(context);
 
     const reply = await requestGPT(context, 1.2, 0.5, 0.1, 0.25);
-    bot.chat(reply);
+    targets.reply = reply;
+    return reply;
 }

@@ -28,16 +28,39 @@ bot.once('spawn', () => {
 bot.on('chat', async (username, message) => {
   targets.chatMessage = message;
 
-  structMessage = [
+  interpretBehaviorContent = [
     { role: 'system', content: `${config.prompts.interpret} \nList of Behavior Functions: ${getBehaviors()}` },
     { role: 'user', content: message },
   ];
-  const interpreted = await openai.requestGPT(structMessage);
-  let data = {};
-  data.message = message;
-  await queue.scheduleTask(async () => await handleInterpreted(interpreted, data), Date.now());
+  continueChatContent = [
+    { role: 'system', content: `Is this message a continuation of the previous conversation or a new behavior request? REPLY ONLY 'continue' or 'behavior'` },
+    { role: 'assistant', content: targets.reply || `No previous reply` },
+    { role: 'user', content: message },
+  ];
+
+  const continueChat = await continueChatCheck(continueChatContent);
+
+  if (continueChat) {
+    targets.chat = true;
+  } else {
+    const interpreted = await openai.requestGPT(interpretBehaviorContent);
+    let data = {};
+    data.message = message;
+    await queue.scheduleTask(async () => await handleInterpreted(interpreted, data), Date.now()); 
+  }
 });
 
+async function continueChatCheck(continueChatContent) {
+
+  const reply = await openai.requestGPT(continueChatContent);
+  console.log(reply);
+  
+  if (reply.includes('continue')) {
+    return true;
+  } else {
+    return false;
+  }
+}
 async function handleInterpreted(interpreted, data) {
   if (getBehaviors().includes(interpreted)) {
     targets[interpreted] = true;

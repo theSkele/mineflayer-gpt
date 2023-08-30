@@ -22,7 +22,7 @@ module.exports = {
 	    const outputTokens = completion.usage.completion_tokens;
 	    const cost = ((inputTokens/1000) * config.price[config.model][0]) + ((outputTokens/1000) * config.price[config.model][1]);
 	    logger.info({ inputMessage: messagesObjArray, outputMessage: reply, cost: cost});
-	    logger.info({ totalCost: calcTotalCost() });
+	    //logger.info({ totalCost: calcTotalCost() });
         return reply;
     },
 };

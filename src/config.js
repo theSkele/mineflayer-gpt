@@ -18,9 +18,15 @@ You will determine which state to trigger that matches the context of provided m
 REPLY ONLY 1 string like 'example' NOT ['example'].
 Choose ONLY 1 STATE from the array:`,
         chatCheck: `Is the player continuing a continuation of the previous conversation
-        or requesting a new state?
-        IF 'No previous reply', this is your first conversation
-        REPLY ONLY 'continue' or 'new'`
+or requesting a new state?
+IF 'No previous reply', this is your first conversation
+REPLY ONLY 'continue' or 'new'`,
+        mine: `Parse player's chat reply for Minecraft Block/Ore and an Amount to mine
+FORMAT REPLY ONLY AS an OBJECT:
+{
+    block: exampleBlock
+    amount: exampleAmount
+}`,
     },
     botSettings: {
         config: {

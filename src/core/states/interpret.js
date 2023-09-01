@@ -44,8 +44,10 @@ module.exports = {
         InterpretState.prototype.continueChatCheck = async function() {
             const reply = await requestGPT(this.continueChatContext);
             console.log(reply);
-            if (reply.includes('continue') || reply.includes('new')) {
+            if (reply.includes('continue')) {
                 return true;
+            } else if (reply.includes('new')) {
+                return false;
             } else {
                 console.error(`GPT response is NOT 'continue' or 'state': ${reply}`);
                 return false;

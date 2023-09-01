@@ -10,6 +10,7 @@ const { GoalNear } = require('mineflayer-pathfinder').goals;
 const config = require('./config');
 const queue = require('./utils/queue');
 const openai = require('./utils/openai');
+const chatManager = require('./utils/chatManager');
 
 const bot = require('./core/bot');
 const { states, getStates } = require('./core/states');
@@ -24,10 +25,9 @@ bot.once('spawn', () => {
   targets.states = getStates();
 });
 
-bot.on('chat', async (username, message) => {
+bot.on('chat', (username, message) => {
   targets.message = message;
-  targets.interpret = true;
-  console.log(targets);
+  chatManager(bot, targets, (message) => {
+      console.log(targets);
+  })(message);
 });
-
-

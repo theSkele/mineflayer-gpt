@@ -3,8 +3,8 @@ const { BehaviorIdle, BotStateMachine, NestedStateMachine, StateTransition } = r
 const targets = require('./targets');
 
 const states = {
-    interpret: require('./states/interpret'),
     chat: require('./states/chat'),
+    mine: require('./states/mine'),
 }
 
 module.exports = {
@@ -18,28 +18,23 @@ module.exports = {
         const transitions = [
             new StateTransition({
                 parent: idle,
-                child: botStates.interpret,
-                shouldTransition: () => targets.interpret,
-            }),
-            new StateTransition({
-                parent: botStates.interpret,
-                child: idle,
-                shouldTransition: () => !targets.interpret,
-            }),
-            new StateTransition({
-                parent: botStates.interpret,
                 child: botStates.chat,
                 shouldTransition: () => targets.chat,
             }),
             new StateTransition({
                 parent: idle,
-                child: botStates.chat,
-                shouldTransition: () => targets.chat,
+                child: botStates.mine,
+                shouldTransition: () => targets.mine,
             }),
             new StateTransition({
                 parent: botStates.chat,
                 child: idle,
                 shouldTransition: () => !targets.chat,
+            }),
+            new StateTransition({
+                parent: botStates.mine,
+                child: idle,
+                shouldTransition: () => !targets.mine,
             }),
 
         ];

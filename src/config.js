@@ -13,10 +13,14 @@ module.exports = {
         chat: `Your role is to engage players in conversation, providing them a friend to chat with.
 Respond with Minecraft-themed replies, when applicable.
 Responses should be relatively SHORT, 1 or 2 sentences ONLY`,
-        interpret: `Your role is to interpret chat messages.
-Given a Minecraft chat message, You will determine which behavior to execute.
-Choose ONLY 1 behavior from the list that matches the context of the chat Message.
-FORMAT REPLY in LOWERCASE and ONLY FUNCTION NAME, like: "zyz" or "behavior"!`,
+        interpret: `Your role is to interpret a given Minecraft chat message,
+You will determine which state to trigger that matches the context of provided message.
+REPLY ONLY 1 string like 'example' NOT ['example'].
+Choose ONLY 1 STATE from the array:`,
+        chatCheck: `Is the player continuing a continuation of the previous conversation
+        or requesting a new state?
+        IF 'No previous reply', this is your first conversation
+        REPLY ONLY 'continue' or 'new'`
     },
     botSettings: {
         config: {

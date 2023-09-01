@@ -3,7 +3,8 @@ const { BehaviorIdle, BotStateMachine, NestedStateMachine, StateTransition } = r
 const targets = require('./targets');
 
 const states = {
-    chat: require('./states/chatState'),
+    interpret: require('./states/interpret'),
+    chat: require('./states/chat'),
 }
 
 module.exports = {
@@ -17,6 +18,21 @@ module.exports = {
         const transitions = [
             new StateTransition({
                 parent: idle,
+                child: botStates.interpret,
+                shouldTransition: () => targets.interpret,
+            }),
+            new StateTransition({
+                parent: botStates.interpret,
+                child: idle,
+                shouldTransition: () => !targets.interpret,
+            }),
+            new StateTransition({
+                parent: botStates.interpret,
+                child: botStates.chat,
+                shouldTransition: () => targets.chat,
+            }),
+            new StateTransition({
+                parent: idle,
                 child: botStates.chat,
                 shouldTransition: () => targets.chat,
             }),
@@ -25,6 +41,7 @@ module.exports = {
                 child: idle,
                 shouldTransition: () => !targets.chat,
             }),
+
         ];
         const rootLayer = new NestedStateMachine(transitions, idle);
         const stateMachine = new BotStateMachine(bot, rootLayer);

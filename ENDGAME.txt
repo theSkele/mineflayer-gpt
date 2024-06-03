@@ -1,0 +1,126 @@
+Basic Actions
+
+    Move Forward
+    Move Backward
+    Move Left
+    Move Right
+    Jump
+    Sneak/Crouch
+    Sprint
+
+Interaction with Environment
+
+    Look Around (Rotate Camera)
+    Interact (Right-Click)
+    Attack/Break Block (Left-Click)
+    Place Block (Right-Click with Block in Hand)
+
+Inventory Management
+
+    Open Inventory (E)
+    Pick Up Item (Left-Click on Item in Inventory)
+    Drop Item (Q or Drag Out of Inventory)
+    Swap Items Between Slots
+
+Crafting and Using Items
+
+    Craft Items using Crafting Table or Inventory Grid
+    Use Furnace/Smoker/Blast Furnace/Brewing Stand/etc. 18 Use Anvil/Grindstone/Smithing Table/etc. 19** Equip Armor or Tools 20** Use Bow/Crossbow/Trident/Fishing Rod
+
+Eating and Drinking
+
+21** Eat Food Item
+22** Drink Potion/Milk
+Building and Mining
+
+23** Mine Blocks with Appropriate Tool
+24** Place Blocks in Desired Locations
+Combat Actions
+
+25** Attack Entity (Melee)
+26** Shoot Projectile Weapon (Bow/Crossbow)
+27** Throw Trident/Snowball/Egg/etc.
+28** Use Shield to Block Attacks
+Special Movements and Abilities
+
+29** Swim/Dive Underwater
+30** Climb Ladder/Vine
+31** Fly in Creative Mode
+32* Elytra Flight
+Redstone Interactions
+
+33* Place Redstone Components
+34* Activate Lever/Button
+35* Open Trapdoor/Fence Gate/Door
+Miscellaneous Actions
+
+36* Sleep in Bed
+37* Trade with Villagers/Wandering Traders
+38* Tame Animals/Pets/Horses etc.
+39 * Ride Mounts like Horses, Pigs, Striders etc.
+
+Advanced Crafting and Usage
+
+    Use Enchanting Table
+    Combine Items in Anvil
+    Repair Items with Grindstone
+    Rename Items with Anvil
+
+Farming and Animal Husbandry
+
+    Plant Crops (Seeds, Saplings, etc.)
+    Harvest Crops
+    Breed Animals (Using Appropriate Food)
+    Milk Cows/Goats
+    Shear Sheep/Mushroom Cows
+
+Fishing
+
+    Cast Fishing Rod
+    Reel in Fishing Rod
+
+Boat and Minecart Interactions
+
+    Place Boat/Minecart on Water/Rails
+    Enter/Exit Boat or Minecart
+
+Beacon and Conduit Interactions
+
+    Activate Beacon with Mineral Blocks 54** Activate Conduit with Prismarine Blocks
+
+Map and Compass Usage
+
+55** Use Map to Navigate
+56** Use Compass to Find Spawn Point
+Banner Customization
+
+57** Create Custom Banners Using Loom
+Music and Sound
+
+58** Play Music Disc in Jukebox
+59** Use Note Block
+Potion Brewing
+
+60** Brew Potions Using Brewing Stand
+Nether Portal Interactions
+
+61** Light Nether Portal Using Flint & Steel or Fire Charge
+End Portal Interactions
+
+62** Activate End Portal by Placing Eyes of Ender
+Structure Building Tools (Creative Mode)
+
+63* Use Structure Block to Save/Load Structures
+Command Block Usage (Creative Mode)
+
+64* Program Command Blocks for Automated Tasks
+Elytra Specific Actions
+
+65* Launch Firework Rocket While Flying for Boost
+Villager Specific Actions
+
+66* Cure Zombie Villager with Splash Potion of Weakness + Golden Apple
+Miscellaneous Advanced Actions
+
+67* Collect Honey from Beehive/Nest using Bottle or Shears without Angering Bees (using Campfire)
+68* Set Spawn Point using Bed or Respawn Anchor (in Nether)

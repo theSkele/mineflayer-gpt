@@ -1,0 +1,20 @@
+{
+  "name": "mineflayer-gpt-rewritten",
+  "version": "0.1.0",
+  "description": "mineflayer with openai",
+  "main": "src/index.js",
+  "scripts": {
+    "run": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "theSkele",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mineflayer": "^4.20.1",
+    "mineflayer-pathfinder": "^2.4.5",
+    "openai": "^4.47.3",
+    "prismarine-viewer": "^1.28.0",
+    "winston": "^3.13.0"
+  }
+}

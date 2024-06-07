@@ -1,21 +1,24 @@
 const { constructContext } = require("./prompts")
 const { requestGPT } = require("./utils/openai");
 const logger = require("./utils/logger");
+
 const Movements = require('mineflayer-pathfinder').Movements
 const { GoalGetToBlock } = require('mineflayer-pathfinder').goals
 
 module.exports = {
     commands: {
         "chat": async (bot, username, message) => {
-            reply = await requestGPT(await constructContext("chat"), 1, 1, 0, 0);
+            reply = await requestGPT(await constructContext("chat", message), 1, 1, 0, 0);
             bot.chat(reply);
         },
+
         "mine": async (bot, username, message) => {
             let mcData = require('minecraft-data')(bot.version);
-            const defaultMovements = new Movements(bot);
+            let defaultMovements = new Movements(bot);
             defaultMovements.canDig = false;
             reply = JSON.parse(await requestGPT(await constructContext("interpretMining", message), 0.2, 1, 0, 0));
             // Reply will contain block + amount { "block": "grass", "amount": 64 }
+            //console.log(mcData.blocksByName[reply.block]);
             for (let i = 0; i < reply.amount; i++) {
                 const target = bot.findBlock({
                     matching: mcData.blocksByName[reply.block].id
@@ -28,11 +31,19 @@ module.exports = {
                     bot.pathfinder.setMovements(defaultMovements);
                     let goal = await new GoalGetToBlock(target.position.x, target.position.y, target.position.z);
                     await bot.pathfinder.goto(goal);
+                    await bot.tool.equipForBlock(target, { requireHarvest: true });
                     await bot.dig(target);
                 } catch (err) {
                     logger.error(err);
                 }
             }
-        }
+        },
+
+        "goto": async (bot, username, message) => {
+            let mcData = require('minecraft-data')(bot.version);
+            let defaultMovements = new Movements(bot);
+            defaultMovements.canDig = true;
+            reply = JSON.parse(await requestGPT(await constructContext("interpretCoords", message), 0.2, 1, 0, 0));
+        },
     }
 }
